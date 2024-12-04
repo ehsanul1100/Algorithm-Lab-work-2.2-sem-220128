@@ -3,7 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 int binary_search_divide_and_conquier(vector<int> & vec, int element,int high,int low){
-    int mid = (low + high/2);
+    int mid = (low + high)/2;
     if(element == vec[mid]){
         return mid+1;
     }

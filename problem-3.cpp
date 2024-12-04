@@ -17,7 +17,7 @@ int binary_search(vector<int> &vec, int element)
         }
         else if (element > vec[mid])
         {
-            low = mid - 1;
+            low = mid + 1;
             cnt1++;
         }
         else
@@ -34,13 +34,11 @@ int binary_search(vector<int> &vec, int element)
 }
 int linear_search(vector<int>& vec,int element){
     bool isFound = false;
-    int ind;
     cnt2++;
     for (size_t i = 0; i < vec.size(); i++,cnt2++)
     {
         if(vec[i] == element){
             isFound = true;
-            ind = i;
             cnt2++;
             break;
         }
@@ -59,14 +57,13 @@ int main()
 {
     vector<int> vec;
     int n, element;
-    cout << "Enter the size of the arry : ";
+    cout << "Enter the size of the array : ";
     cin >> n;
     for (size_t i = 0; i < n; i++)
     {
         cin >> element;
         vec.push_back(element);
     }
-    sort(vec.begin(), vec.end());
     cout << "Enter the element: ";
     cin >> element;
     int linear_complexity = linear_search(vec,element);
@@ -75,7 +72,7 @@ int main()
 
     if(linear_complexity != -1 || binary_complexity != -1){
         cout << "complexity of linear search = " << linear_complexity <<endl;
-        cout << "Complexity of linear search = " << binary_complexity <<endl;
+        cout << "Complexity of binary search = " << binary_complexity <<endl;
     }
     else{
         cout << "Element not found!!";
