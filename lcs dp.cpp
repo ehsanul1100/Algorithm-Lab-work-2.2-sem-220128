@@ -5,8 +5,8 @@ int lcs_dp(string str1, string str2)
     int n = str1.size();
     int m = str2.size();
     string dp_string;
-    vector<vector<int>> dp_table(n + 1, vector<int>(n + 1, 0));
-    vector<vector<char>> dp_direction(n + 1, vector<char>(n + 1, ' '));
+    vector<vector<int>> dp_table(n + 1, vector<int>(m + 1, 0));
+    vector<vector<char>> dp_direction(n + 1, vector<char>(m + 1, ' '));
     for (size_t i = 1; i <= n; i++)
     {
         for (size_t j = 1; j <= m; j++)
@@ -28,7 +28,7 @@ int lcs_dp(string str1, string str2)
     {
         if (dp_direction[i][j] == 'D')
         {
-            dp_string.push_back(str1[i - 1]);
+            dp_string = str1[i - 1] + dp_string;
             i--;
             j--;
         }
@@ -42,7 +42,7 @@ int lcs_dp(string str1, string str2)
         }
     }
 
-    reverse(dp_string.begin(), dp_string.end());
+    // reverse(dp_string.begin(), dp_string.end());
     cout << "LCS: " << dp_string << endl;
 
     return dp_table[n][m];
